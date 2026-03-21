@@ -24,14 +24,6 @@ Convenções:
 | RF-11 | RF | Mapa Preditivo | Permitir simular a segurança de uma rota para horários futuros. | Must | Mapa altera índices conforme o horário selecionado. |
 | RF-12 | RF | Quiz Conscientizador | Questionário educativo sobre tipos de violência no primeiro acesso. | Should | Usuária completa o quiz e padroniza termos de denúncia. |
 | RF-13 | RF | Central de Informações | Listar telefones úteis, guias de primeiros socorros e direitos jurídicos. | Could | Acesso rápido a conteúdos educativos e contatos de emergência. |
-| RNF-01 | RNF | Precisão Geográfica | Utilizar PostGIS para garantir precisão em consultas espaciais. | Must | Consultas de proximidade operam com alta precisão geográfica. |
 | RNF-02 | RNF | Validade Temporal | Relatos perdem peso no índice após período sem revalidação. | Should | Sistema expira alertas antigos para manter o mapa atual. |
-| RNF-03 | RNF | Consumo de Bateria | Otimizar o uso de GPS para preservar a bateria do dispositivo. | Should | Gestão eficiente da localização durante o trajeto. |
 
-## Regras de negócio
 
-- **RN-01 — Cálculo do Índice:** O índice de cada rua é uma média ponderada entre infraestrutura e histórico de relatos.
-- **RN-02 — Validade de Relatos:** Relatos têm validade temporal; sem revalidação, perdem peso no índice dinâmico.
-- **RN-03 — Pontos Violeta:** Representam locais físicos treinados para acolhimento imediato em situação de risco.
-- **RN-04 — Escolta Virtual:** Contatos de confiança devem visualizar a rota sem precisar instalar o app.
-- **RN-05 — Lógica Temporal:** O sistema reconhece que a segurança de uma via muda conforme o horário do dia.
