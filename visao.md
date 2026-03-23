@@ -15,7 +15,10 @@ A ocupação do espaço urbano apresenta recortes de gênero acentuados, uma vez
 * **Medo como Rotina:** A socialização do medo limita a liberdade plena e a independência feminina nas cidades.
 
 ## 2. Objetivo do Produto
-Oferecer autonomia e segurança às mulheres no ambiente urbano de Cascavel através de uma ferramenta social sem fins lucrativos. O aplicativo permite avaliar trajetos baseando-se em dados oficiais, condições das vias e experiências reais das usuárias para transformar o medo em independência.
+* **Viabilizar a navegação preditiva:** Priorizar o bem-estar e a segurança das vias em vez de apenas a rapidez do trajeto.
+* **Fornecer o crowdsourcing de segurança:** Inteligência coletiva para mapear riscos que não aparecem em boletins de ocorrência.
+* **Proporcionar uma rede de apoio ativa:** Ferramentas de acompanhamento virtual e botões de emergência.
+* **Adotar métodos de conscientização:** Orientações jurídicas e educativas sobre violência de gênero.
 
 ## 3. Público-Alvo (Personas)
 * **Mulheres que se deslocam a pé/transporte público:** Necessitam de rotas seguras para o dia a dia.
@@ -23,10 +26,9 @@ Oferecer autonomia e segurança às mulheres no ambiente urbano de Cascavel atra
 * **Vítimas de Assédio/Intimidação:** Buscam suporte, orientação e locais de refúgio imediato.
 
 ## 4. Proposta de Valor
-* **Navegação Preditiva:** Rotas que priorizam o bem-estar e iluminação em vez de apenas a distância curta.
-* **Crowdsourcing de Segurança:** Inteligência coletiva para mapear riscos que não aparecem em boletins de ocorrência.
-* **Rede de Apoio Ativa:** Ferramentas de acompanhamento virtual e botões de emergência.
-* **Conscientização:** Orientações jurídicas e educativas sobre violência de gênero.
+Promover autonomia e segurança às mulheres no ambiente urbano de Cascavel através de uma ferramenta social sem fins lucrativos. O aplicativo permite avaliar trajetos baseando-se em dados oficiais, condições das vias e experiências reais das usuárias para transformar o medo em independência.
+
+
 
 ---
 
@@ -46,14 +48,5 @@ Oferecer autonomia e segurança às mulheres no ambiente urbano de Cascavel atra
 * **Mapa Temporal:** Simulação de segurança da rota conforme o horário do dia.
 
 
-
----
-
-## 6. Jornada do Usuário
-1.  **Planejamento:** A usuária insere o destino e o horario e visualiza a rota "Verde" (mais segura).
-2. **Deslocamento:** Ativa o acompanhamento virtual para sua rede de apoio.
-3.  **Interação:** Reporta uma lâmpada apagada no trajeto via "Relato Rápido".
-4.  **Emergência (se houver):** Aciona o Ponto Violeta mais próximo para refúgio.
-5.  **Feedback:** Ao chegar, avalia a sensação de segurança para atualizar o índice da rua.
 
 ---
