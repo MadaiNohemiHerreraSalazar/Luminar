@@ -24,6 +24,6 @@ Convenções:
 | RF-11 | RF | Mapa Preditivo | Permitir simular a segurança de uma rota para horários futuros. | Must | Mapa altera índices conforme o horário selecionado. |
 | RF-12 | RF | Quiz Conscientizador | Questionário educativo sobre tipos de violência no primeiro acesso. | Should | Usuária completa o quiz e padroniza termos de denúncia. |
 | RF-13 | RF | Central de Informações | Listar telefones úteis, guias de primeiros socorros e direitos jurídicos. | Could | Acesso rápido a conteúdos educativos e contatos de emergência. |
-| RNF-14 | RNF | Validade Temporal | Relatos perdem peso no índice após período sem revalidação. | Should | Sistema expira alertas antigos para manter o mapa atual. |
+
 
 
