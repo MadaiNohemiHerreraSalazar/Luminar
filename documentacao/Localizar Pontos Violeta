@@ -1,0 +1,64 @@
+RF-09 — Localizar e Navegar para Pontos Violeta
+
+UC-06
+
+Produto: Luminar
+
+Objetivo:
+Oferecer à usuária a localização de estabelecimentos parceiros (comércios, farmácias, cafés) treinados para oferecer refúgio e auxílio imediato em situações de risco ou assédio.
+
+Atores:
+Usuária: Busca um local de refúgio.
+Estabelecimento Parceiro (Ponto Violeta): Oferece o espaço seguro.
+Sistema: Filtra os pontos mais próximos e traça a rota de emergência.
+
+Regras de Negócio Aplicadas
+RN-22 — Verificação de Funcionamento
+O sistema só deve exibir no mapa os Pontos Violeta que estejam dentro do seu horário de funcionamento confirmado.
+
+RN-23 — Prioridade de Rota de Fuga
+Ao selecionar um Ponto Violeta, o sistema deve traçar a rota mais curta possível, mesmo que não seja a "mais verde", priorizando a chegada ao refúgio.
+
+RN-24 — Protocolo de Chegada
+Ao chegar a 10 metros do Ponto Violeta, o sistema deve exibir um botão para "Confirmar Segurança" ou "Acionar Ajuda Local".
+
+UC-07
+
+Pré-condições
+O aplicativo está com a camada de "Pontos Violeta" ativa ou a usuária aciona o botão de emergência.
+O GPS está ativo.
+
+Gatilho
+A usuária clica no ícone de "Ponto Violeta" (flor/escudo lilás) no mapa ou busca por "Refúgio Próximo".
+
+Fluxo Principal
+1. O sistema destaca visualmente todos os estabelecimentos parceiros num raio de 1km da usuária.
+2. A usuária seleciona o estabelecimento mais próximo ou de sua preferência.
+3. O sistema exibe informações cruciais: Nome, Endereço, Horário de Fechamento e Botão "Ir Agora".
+5. A usuária clica em "Ir Agora".
+6. O sistema inicia a navegação por voz e visual, guiando a usuária até a entrada do estabelecimento.
+7. Ao detectar a chegada, o sistema altera a interface para o modo de "Refúgio Ativo", oferecendo contatos de emergência rápidos.
+
+Pós-condições
+A usuária encontra-se em um ambiente seguro e acolhedor monitorado por parceiros do programa.
+
+Cenários de Validação
+CT-26 — Busca de Refúgio em Horário Noturno
+Dado que são 02:00 da manhã.
+Quando a usuária busca por um Ponto Violeta.
+Então o sistema deve ocultar cafés/lojas que fecharam às 18:00 e exibir apenas farmácias ou postos 24h credenciados.
+
+CT-27 — Navegação de Emergência (Prioridade)
+Dado que a usuária está se sentindo perseguida.
+Quando ela seleciona o Ponto Violeta mais próximo.
+Então o sistema deve ignorar o Smart Routing convencional e traçar o caminho mais rápido (linha reta segura) até a porta do local.
+
+CT-28 — Informação de Ponto Violeta Inativo
+Dado que um estabelecimento parceiro encerrou o contrato com o Luminar.
+Quando o sistema atualiza o banco de dados.
+Então o ícone desse estabelecimento deve desaparecer imediatamente do mapa para evitar que mulheres busquem refúgio em locais não preparados.
+
+CT-29 — Acionamento em Zona de Sombra (Offline)
+Dado que o mapa já foi carregado em cache.
+Quando a usuária clica em um Ponto Violeta sem sinal de internet.
+Então o sistema deve permitir o início da navegação utilizando o mapa offline previamente armazenado no dispositivo.
