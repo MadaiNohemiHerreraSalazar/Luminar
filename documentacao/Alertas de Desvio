@@ -1,0 +1,64 @@
+RF-08 — Monitorar Trajeto e Disparar Alertas de Desvio
+
+UC-05
+
+Produto: Luminar
+
+Objetivo:
+Monitorar em tempo real se a usuária permanece na rota segura sugerida e notificar automaticamente sua rede de contatos caso ocorra um desvio suspeito ou parada prolongada em zona de risco.
+
+Atores
+Usuária: Realiza o trajeto de navegação ativa.
+Contatos de Confiança: Recebem as notificações de alerta.
+Sistema: Monitora as coordenadas GPS e compara com a rota planejada.
+
+Regras de Negócio Aplicadas
+RN-19 — Margem de Desvio Tolerável
+O sistema deve considerar um desvio de até 30 metros como erro de GPS ou contorno de obstáculo antes de iniciar o protocolo de alerta.
+
+RN-20 — Tempo de Inatividade (Deadman Switch)
+Se a usuária parar de se movimentar por mais de 5 minutos em uma zona de score "Vermelho", o sistema deve solicitar uma confirmação de segurança ("Você está bem?").
+
+RN-21 — Hierarquia de Notificação
+O alerta é disparado primeiro via Notificação Push para a usuária; caso não haja resposta em 60 segundos, o SMS/Link é enviado aos contatos.
+
+UC-06
+
+Pré-condições
+A usuária iniciou uma rota segura através do Smart Routing (RF-02).
+A Escolta Digital (RF-07) está ativa com pelo menos um contato cadastrado.
+
+Gatilho
+O sistema detecta que as coordenadas atuais da usuária divergem da rota traçada ou que houve uma parada não planejada.
+
+Fluxo Principal
+1. O sistema identifica que a usuária saiu do perímetro da rota sugerida em mais de 30 metros.
+2. O sistema emite um alerta sonoro e visual no dispositivo da usuária: "Detectamos um desvio. Está tudo bem?".
+3. A usuária tem 60 segundos para clicar em "Sim, estou bem" ou "Recalcular rota".
+4. Caso não haja interação, o sistema dispara automaticamente uma mensagem de alerta para os contatos de confiança.
+5. A mensagem contém: a localização exata, o percentual do trajeto concluído e um link para o rastreio em tempo real.
+6. O sistema mantém o monitoramento intensivo (atualização de GPS a cada 5 segundos) até que a usuária chegue ao destino ou finalize a sessão.
+
+Pós-condições
+A rede de apoio é informada sobre a possível situação de risco antes que ela escale.
+
+Cenários de Validação
+CT-22 — Desvio de Rota com Resposta da Usuária
+Dado que a usuária decidiu dobrar em uma rua diferente por vontade própria.
+Quando o sistema exibir o alerta de desvio e ela clicar em "Estou bem".
+Então o sistema deve atualizar a rota para o novo caminho e não notificar os contatos.
+
+CT-23 — Desvio de Rota sem Resposta (Emergência)
+Dado que a usuária foi forçada a mudar de trajeto ou perdeu acesso ao celular.
+Quando o cronômetro de 60 segundos expirar sem interação.
+Então o sistema deve enviar imediatamente o SMS de emergência para todos os contatos cadastrados.
+
+CT-24 — Parada em Zona de Risco
+Dado que a usuária parou de caminhar em um segmento de via de cor "Vermelha".
+Quando o tempo de inatividade atingir o limite da RN-20.
+Então o sistema deve ativar o protocolo de verificação de segurança imediatamente, independente de haver desvio de rota.
+
+CT-25 — Perda de Sinal de GPS/Internet
+Dado que a usuária entra em um local sem sinal durante o monitoramento.
+Quando o sistema perde o rastreio por mais de 3 minutos.
+Então o sistema deve enviar o último local conhecido para os contatos com o aviso de "Sinal Perdido".
