@@ -28,8 +28,6 @@ A ocupação do espaço urbano apresenta recortes de gênero acentuados, uma vez
 ## 4. Proposta de Valor
 Promover autonomia e segurança às mulheres no ambiente urbano de Cascavel através de uma ferramenta social sem fins lucrativos. O aplicativo permite avaliar trajetos baseando-se em dados oficiais, condições das vias e experiências reais das usuárias para transformar o medo em independência.
 
-
-
 ---
 
 ## 5. Escopo do Produto
@@ -46,7 +44,5 @@ Promover autonomia e segurança às mulheres no ambiente urbano de Cascavel atra
 * **Quiz Conscientizador:** Ferramenta interativa para identificar tipos de violência e padronizar denúncias.
 * **Guia de Direitos:** Telefones úteis (Delegacia da Mulher) e orientações jurídicas simplificadas.
 * **Mapa Temporal:** Simulação de segurança da rota conforme o horário do dia.
-
-
 
 ---
