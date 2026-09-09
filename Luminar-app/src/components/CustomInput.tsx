@@ -6,6 +6,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInputProps,
+  StyleProp,
+  TextStyle,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../core/theme/colors';
@@ -17,6 +19,7 @@ interface CustomInputProps extends TextInputProps {
   variant?: InputVariant;
   isPassword?: boolean;
   showEditIcon?: boolean;
+  labelStyle?: StyleProp<TextStyle>;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = ({
@@ -25,6 +28,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   isPassword = false,
   showEditIcon = false,
   style,
+  labelStyle,
   ...restProps
 }) => {
   const [hidePassword, setHidePassword] = useState(isPassword);
@@ -33,7 +37,13 @@ export const CustomInput: React.FC<CustomInputProps> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.label, isUnderlined ? styles.labelDark : styles.labelLight]}>
+      <Text
+        style={[
+          styles.label,
+          isUnderlined ? styles.labelDark : styles.labelLight,
+          labelStyle,
+        ]}
+      >
         {label}
       </Text>
 
@@ -54,7 +64,6 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           {...restProps}
         />
 
-        {/* Ícono de visibilidad para contraseña */}
         {isPassword && (
           <TouchableOpacity
             onPress={() => setHidePassword(!hidePassword)}
@@ -68,7 +77,6 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           </TouchableOpacity>
         )}
 
-        {/* Ícono de edición (lápiz) para variaciones underlined */}
         {showEditIcon && !isPassword && (
           <View style={styles.iconButton}>
             <Ionicons name="pencil-outline" size={18} color="#A0A0A0" />
@@ -85,21 +93,20 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   label: {
+    fontFamily: 'Baloo2_700Bold',
     fontSize: 14,
-    fontWeight: 'bold',
     marginBottom: 6,
   },
   labelLight: {
-    color: '#1E1035', // Texto oscuro para fondo claro
+    color: '#1E1035',
   },
   labelDark: {
-    color: COLORS.white, // Texto blanco para fondo oscuro (#25063F)
+    color: COLORS.white,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  // Variante Outlined (Borde completo sobre fondo blanco)
   outlinedContainer: {
     backgroundColor: COLORS.white,
     borderWidth: 1,
@@ -108,7 +115,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     height: 48,
   },
-  // Variante Underlined (Solo línea inferior sobre fondo oscuro)
   underlinedContainer: {
     backgroundColor: 'transparent',
     borderBottomWidth: 1.5,

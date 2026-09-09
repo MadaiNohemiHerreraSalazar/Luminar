@@ -1,41 +1,46 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { BottomBar, TabType } from './src/components/BottomBar';
-import { COLORS } from './src/core/theme/colors';
+import { SplashScreen } from './src/modules/auth/screens/SplashScreen';
+import { InitialScreen } from './src/modules/auth/screens/InitialScreen';
+import { LoginScreen } from './src/modules/auth/screens/LoginScreen';
+import { RegisterScreen } from './src/modules/auth/screens/RegisterScreen';
+
+type AuthScreenState = 'splash' | 'initial' | 'login' | 'register';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<TabType>('map');
+  const [currentScreen, setCurrentScreen] = useState<AuthScreenState>('splash');
+
+  useEffect(() => {
+    // Temporizador de 3.5 segundos antes de cambiar de Splash a Initial
+    const timer = setTimeout(() => {
+      setCurrentScreen('initial');
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <SafeAreaProvider>
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.text}>Tela Ativa: {currentTab.toUpperCase()}</Text>
-        </View>
+      {currentScreen === 'splash' && <SplashScreen />}
 
-        <BottomBar
-          activeTab={currentTab}
-          onTabPress={(tab) => setCurrentTab(tab)}
+      {currentScreen === 'initial' && (
+        <InitialScreen
+          onNavigateToLogin={() => setCurrentScreen('login')}
+          onNavigateToRegister={() => setCurrentScreen('register')}
         />
-      </View>
+      )}
+
+      {currentScreen === 'login' && (
+        <LoginScreen
+          onLoginSuccess={(id) => console.log('Usuario autenticado:', id)}
+        />
+      )}
+
+      {currentScreen === 'register' && (
+        <RegisterScreen
+          onRegisterSuccess={(data) => console.log('Usuario registrado:', data)}
+        />
+      )}
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.secondary,
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    color: COLORS.white,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
