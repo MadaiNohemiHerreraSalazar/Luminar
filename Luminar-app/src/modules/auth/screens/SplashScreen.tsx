@@ -6,20 +6,22 @@ import { COLORS } from '../../../core/theme/colors';
 
 export const SplashScreen: React.FC = () => {
   const [fontsLoaded] = useFonts({
-    Lobster_400Regular,
+    lobster: Lobster_400Regular,
   });
 
   if (!fontsLoaded) {
     return (
-      <View style={[styles.container, styles.center]}>
-        <ActivityIndicator size="large" color={COLORS.primary} />
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color={COLORS.white} />
       </View>
     );
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.logoTitle}>Luminar</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>Luminar</Text>
+      </View>
     </SafeAreaView>
   );
 };
@@ -27,16 +29,23 @@ export const SplashScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1C0434', 
+    backgroundColor: COLORS.background,
+  },
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  center: {
+  content: {
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  logoTitle: {
-    fontFamily: 'Lobster_400Regular',
+  title: {
+    fontFamily: 'lobster',
     fontSize: 48,
     color: COLORS.white,
+    textAlign: 'center',
   },
 });

@@ -12,9 +12,11 @@
     "@expo-google-fonts/baloo-2": "^0.4.2",
     "@expo-google-fonts/lobster": "^0.4.1",
     "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "^57.0.0",
     "expo-font": "~57.0.3",
     "expo-status-bar": "~57.0.1",
+    "firebase": "^12.19.0",
     "react": "19.2.3",
     "react-native": "0.86.3",
     "react-native-safe-area-context": "~5.7.0"
